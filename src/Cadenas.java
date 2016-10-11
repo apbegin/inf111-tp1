@@ -1,10 +1,10 @@
 import java.util.Random;
 
 /**
- * Représente un cadenas virtuel dans le cadre de
+ * ReprÃ©sente un cadenas virtuel dans le cadre de
  * 
  *
- * @author Mathieu Nayrolles et Pierre Bélisle (MNOP code inc).
+ * @author Mathieu Nayrolles et Pierre BÃ©lisle (MNOP code inc).
  * copyright : septembre 2016
  *
  */
@@ -15,90 +15,94 @@ public class Cadenas {
 	// \r\n pour sauter une ligne peut importe la plate-forme 
 	// (Max, Linux, Windows).
 	private static String OUVERT = 
-			 "\r\n       .----------.     " + 
-	         "\r\n      /   .-------.  \\" +
-			 "\r\n     /  /             \\ \\.       " + 
-	         "\r\n     |  |                          " + 
-			 "\r\n     |  |                         " + 
-	         "\r\n   _|  |__ ____     _    " + 
-			 "\r\n .'  |_|               |_|    '. " + 
-	         "\r\n '.____ ____ ____.' "	+ 
-			 "\r\n |      .'______'.       | " + 
-	         "\r\n '._.'.'  _____  '. '._.' " + 
-			 "\r\n '__ |  INF111  | ._.' " +
-			 "\r\n |     '.'._____.'.'      | " + 
-			 "\r\n '.___'.____.'____.' " + 
-			 "\r\n  '.___________.' ";
+					"\r\n      .--------. "+          
+					"\r\n     / .------. \\"+
+					"\r\n    / /        \\ \\"+           
+					"\r\n    | |         "+
+					"\r\n    | |         "+
+					"\r\n   _| |________   _ "+
+					"\r\n .' |_|        |_| '. "+
+					"\r\n '._____ ____ _____.' "+
+					"\r\n |     .'____'.     | "+
+					"\r\n '.__.'.'    '.'.__.' "+
+					"\r\n '.__  |INF111|  __.' "+
+					"\r\n |   '.'.____.'.'   | "+
+					"\r\n '.____'.____.'____.' "+
+					"\r\n '.________________.' ";
 	
 	
 	private static String FERME = 
-			 "\r\n       .----------.     " + 
-	         "\r\n      /   .-------.  \\         " +
-			 "\r\n     /  /             \\  \\       " + 
-	         "\r\n     |  |               |  |         " + 
-			 "\r\n     |  |               |  |         " + 
-	         "\r\n   _|  |__ ____ |  | _    " + 
-			 "\r\n .'  |_|               |_|    '. " + 
-	         "\r\n '.____ ____ ____.' "	+ 
-			 "\r\n |      .'______'.       | " + 
-	         "\r\n '._.'.'  _____  '. '._.' " + 
-			 "\r\n '__ |  INF111  | ._.' " +
-			 "\r\n |     '.'._____.'.'      | " + 
-			 "\r\n '.___'.____.'____.' " + 
-			 "\r\n  '.___________.' ";
+			"\r\n      .--------. "+          
+			"\r\n     / .------. \\"+
+			"\r\n    / /        \\ \\"+           
+			"\r\n    | |        | |"+
+			"\r\n    | |        | |"+
+			"\r\n   _| |________| |_"+
+			"\r\n .' |_|            '."+
+			"\r\n '._____ ____ _____.' "+
+			"\r\n |     .'____'.     | "+
+			"\r\n '.__.'.'    '.'.__.' "+
+			"\r\n '.__  |INF111|  __.' "+
+			"\r\n |   '.'.____.'.'   | "+
+			"\r\n '.____'.____.'____.' "+
+			"\r\n '.________________.' ";
+	
+	
+	
+
 	
 	// Les constantes	
 
-	// Le nombre d'indices servant à la génération de la combinaison.
-	// À modifier pour avoir une plus grande combinaison.
+	// Le nombre d'indices servant Ã  la gÃ©nÃ©ration de la combinaison.
+	// Ã  modifier pour avoir une plus grande combinaison.
 	public static final int MAX_INDICES = 10;
 	
-	// Nombre de lettres majuscules au départ de la combinaison.
+	// Nombre de lettres majuscules au dÃ©part de la combinaison.
 	private static int NB_LETTRES = 2;
 	
 	// Les attributs
 	private boolean estOuvert = false;
 	
-	// À générer.
+	// Ã  gÃ©nÃ©rer.
 	private String combinaison = "";
 	
-	// En tout temps, on retient le nombre de lettre trouvée.
+	// En tout temps, on retient le nombre de lettre trouvÃ©e.
 	private int nbLettreTrouvee = 0;
 	
-	// Aide à générer la combinaison
+	// Aide Ã  gÃ©nÃ©rer la combinaison
 	private int[] tabIndices = new int[MAX_INDICES];
 	
-	// Tableau de présences.  Sert à retenir les caractère dévoilés.
+	// Tableau de prÃ©sences.  Sert Ã  retenir les caractÃ¨re dÃ©voilÃ©s.
 	private boolean[] dejaTrouve;
 
 	/**
 	 * Constructeur
 	 * 
-	 * Crée un cadenas qui peut être ouvert ou non.   Il s'ouvre si tous les
-	 * caractères de la combinaison ont été trouvés.  La vérification se fait 
-	 * à l'aide de la fonction booléenne placerCarALaPosition.
+	 * CrÃ©e un cadenas qui peut Ãªtre ouvert ou non.   Il s'ouvre si tous les
+	 * caractÃ¨res de la combinaison ont Ã©tÃ© trouvÃ©s.  La vÃ©rification se fait 
+	 * Ã  l'aide de la fonction boolÃ©enne placerCarALaPosition.
 	 * 
-	 * L'état du cadenas est affiché en mode console ainsi que la combinaison
-	 * lorsqu'elle est trouvée.
+	 * L'Ã©tat du cadenas est affichÃ© en mode console ainsi que la combinaison
+	 * lorsqu'elle est trouvÃ©e.
 	 */
 	public Cadenas() {
 		
 		/*
-		 * Les tâches sont déléguées à des SP privés.
+		 * Les tÃ¢ches sont dÃ©lÃ©guÃ©es Ã  des SP privÃ©s.
 		 */
 		genererCombinaison();
 		
-		// Il faut attendre d'avoir la combinaison pour créer le tableau de présences.
+		// Il faut attendre d'avoir la combinaison pour crÃ©er le tableau de prÃ©sences.
 		dejaTrouve = new boolean[combinaison.length()];
 		
 		fermer();
 		
-		// Utile pour le débogage.  On ne fait pas cela habituellement.
+		// Utile pour le dÃ©bogage.  On ne fait pas cela habituellement.
 		afficherCadenas();
 	}
 
 	/**
-	 * Remplit le tableau d'indices avec des chiffres aléatoires.
+	 * Remplit le tableau d'indices avec des chiffres alÃ©atoires.
 	 */
 	private void genererTabIndices() {
 		
@@ -109,14 +113,14 @@ public class Cadenas {
 	}
 
 	/**
-	 * Affiche l'état du cadenas
+	 * Affiche l'Ã©tat du cadenas
 	 */
 	private void afficherCadenas() {
 
 		System.out.println();
 		System.out.println();
 
-		// Selon l'état de l'attribut qui est modifié par placerCarAlaPosition.
+		// Selon l'Ã©tat de l'attribut qui est modifiÃ© par placerCarAlaPosition.
 		if (estOuvert) {
 			System.out.println(OUVERT);
 		} else {
@@ -132,40 +136,40 @@ public class Cadenas {
 	 * Regarde sur un couple lettre/position est valide pour la combinaison du
 	 * cadenas.
 	 *
-	 * @param position La position à regarder.
-	 * @param car La lettre proposée pour la position.
-	 * @return -1 Si la lettre proposée est avant la lettre dans la table ascii.
-	 * @return 1 Si la lettre proposée est après la lettre dans la table ascii.
-	 * @return 0 Si la lettre proposée est la bonne lettre.
+	 * @param position La position Ã  regarder.
+	 * @param car La lettre proposÃ©e pour la position.
+	 * @return -1 Si la lettre proposÃ©e est avant la lettre dans la table ascii.
+	 * @return 1 Si la lettre proposÃ©e est aprÃ¨s la lettre dans la table ascii.
+	 * @return 0 Si la lettre proposÃ©e est la bonne lettre.
 	 */
 	public int placerCarAlaPosition(char car, int position) {
 
 		/**
-		 * STRATEGIE: On récupère le caractère de la combinaison pour la 
-		 * position reçue puis on le compare avec le caractère proposé.
+		 * STRATEGIE: On rÃ©cupÃ¨re le caractÃ¨re de la combinaison pour la 
+		 * position reÃ§ue puis on le compare avec le caractÃ¨re proposÃ©.
 		 *
-		 * Si les caractères sont égaux, on incrémente nbLettreTrouvee.
-		 * Finalement, si tous les caractères ont été trouvés, alors on affiche
+		 * Si les caractÃ¨res sont Ã©gaux, on incrÃ©mente nbLettreTrouvee.
+		 * Finalement, si tous les caractÃ¨res ont Ã©tÃ© trouvÃ©s, alors on affiche
 		 * le cadenas ouvert.
 		 */
 		char carCourant = combinaison.charAt(position);
 		
-		// Valeur à retourner.
+		// Valeur Ã  retourner.
 		int etatRecherche = 0;
 
-		// Pour l'aide au décodage.
+		// Pour l'aide au dÃ©codage.
 		System.out.print(car);
 
 		if (carCourant == car) {
 			
-			// Retenir que ce caractère vient d'être trouvé.
+			// Retenir que ce caractÃ¨re vient d'Ãªtre trouvÃ©.
 			dejaTrouve[nbLettreTrouvee] = true;
 			nbLettreTrouvee++;
 			
-			// Indique que le caractère est trouvé.
+			// Indique que le caractÃ¨re est trouvÃ©.
 			System.out.print('*');
 			
-			// S'ils sont tous dévoilée, on l'ouvre.
+			// S'ils sont tous dÃ©voilÃ©e, on l'ouvre.
 			if (nbLettreTrouvee == combinaison.length()) {
 				estOuvert = true;
 			}			
@@ -175,8 +179,8 @@ public class Cadenas {
 			afficherStatusCombinaison();
 
 		}
-		// Retourne l'état selon la comparaison entre le caractère courant 
-		// et celui reçu.
+		// Retourne l'Ã©tat selon la comparaison entre le caractÃ¨re courant 
+		// et celui reÃ§u.
 		else {
 			etatRecherche = (carCourant > car)?1:-1;
 		}
@@ -185,14 +189,14 @@ public class Cadenas {
 	}
 
 	/**
-	 * Affiche les caractères trouvés. Les caractères non trouvés sont remplacés
+	 * Affiche les caractÃ¨res trouvÃ©s. Les caractÃ¨res non trouvÃ©s sont remplacÃ©s
 	 * par des *.
 	 */
 	private void afficherStatusCombinaison() {
 
 		System.out.print("Combinaison : ");
 
-		// Rappel: Le tableau de booléens et la combinaison ont la même taille.
+		// Rappel: Le tableau de boolÃ©ens et la combinaison ont la mÃªme taille.
 		for (int i = 0; i < dejaTrouve.length; i++) {
 
 			if(dejaTrouve[i]){
@@ -208,11 +212,11 @@ public class Cadenas {
 	}
 	
 	/*
-	 * Génère les NB_LETTRES majuscules au début de la combinaison.
+	 * GÃ©nÃ©re les NB_LETTRES majuscules au dÃ©but de la combinaison.
 	 */
 	private void genererPremiereLettre(){
 	
-   	        // Choisit les deux premières lettres au hasard et les concatène à la 
+   	        // Choisit les deux premiÃ¨res lettres au hasard et les concatÃ©ne Ã  la 
 			// combinaison.
 			for (int i = 0; i < NB_LETTRES; i++) {
 				combinaison += 
@@ -223,20 +227,20 @@ public class Cadenas {
 	}
 	
 	/*
-	 * Génère les chiffres de la combinaison en se servant d'un tableau d'indices
-	 * générer au hasard.
+	 * GÃ©nÃ©re les chiffres de la combinaison en se servant d'un tableau d'indices
+	 * gÃ©nÃ©rer au hasard.
 	 */
 	private void genererChiffres(){
 
-		// Générer le tableau d'indices.
+		// GÃ©nÃ©rer le tableau d'indices.
 		genererTabIndices();
 
-		// Chaque caractère suivant est le résultat de l'opération choisit au hasard.
+		// Chaque caractÃ¨re suivant est le rÃ©sultat de l'opÃ©ration choisit au hasard.
 		for (int i = 0; i < tabIndices.length; i = i + 2) {
 			
 			String op;
 
-			// Éviter la division par 0.
+			// Ã©viter la division par 0.
 			do{
 				op = M_Fonctions.OPERATIONS[(int) Math.floor(Math.random() *
 						M_Fonctions.OPERATIONS.length)];
@@ -250,15 +254,15 @@ public class Cadenas {
 
 	}
 	/**
-	 * Génère une combinaison pour le cadenas
+	 * GÃ©nÃ©re une combinaison pour le cadenas
 	 */
 	private void genererCombinaison() {
 
 		/**
-		 * STRATEGIE: On génère une  combinaison composée de 2 lettres + un
-		 * nombre. Le nombre est généré aléatoirement en utilisant les
-		 * opérations mathématiques standards entre chaque nombre du tableau
-		 * tabIndices et en concatenant les résultats. Par ex:
+		 * STRATEGIE: On gÃ©nÃ¨re une  combinaison composÃ©e de 2 lettres + un
+		 * nombre. Le nombre est gÃ©nÃ©rÃ© alÃ©atoirement en utilisant les
+		 * opÃ©rations mathÃ©matiques standards entre chaque nombre du tableau
+		 * tabIndices et en concatenant les rÃ©sultats. Par ex:
 		 *
 		 * numbers : 2 7 9 5 7 3 
 		 *                        2+7 = 9 (MDP : AA9) 
@@ -273,7 +277,7 @@ public class Cadenas {
 
 	/**
 	 *
-	 * @return les nombres aléatoires utilisés.
+	 * @return les nombres alÃ©atoires utilisÃ©s.
 	 */
 	public int[] tabIndices() {
 		return tabIndices;
@@ -281,14 +285,14 @@ public class Cadenas {
 
 	/**
 	 *
-	 * @return l'état du cadenas.
+	 * @return l'Ã©tat du cadenas.
 	 */
 	public boolean estOuvert() {
 		return estOuvert;
 	}
 
 	/*
-	 * Réinitialise les valeurs pour se retrouver dans l'état "pas ouvert". 
+	 * RÃ©initialise les valeurs pour se retrouver dans l'Ã©tat "pas ouvert". 
 	 */
 	public void fermer(){
 		

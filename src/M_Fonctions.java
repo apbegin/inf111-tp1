@@ -2,7 +2,7 @@ import java.util.Random;
 
 public class M_Fonctions {
 
-	// Deux petit tableaux utilitaires pour générer des lettres et des chiffres.
+	// Deux petit tableaux utilitaires pour gÃ©nÃ©rer des lettres et des chiffres.
 	public static String LETTRES_MAJUSCULES = 
 			"ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 	
@@ -12,9 +12,9 @@ public class M_Fonctions {
 
 
 	/**
-	 * Applique l'operation arithmétique entre nombre1 et nombre2.
+	 * Applique l'operation arithmÃ©tique entre nombre1 et nombre2.
 	 *
-	 * Le résultat ne peut pas être négatif.
+	 * Le rÃ©sultat ne peut pas Ãªtre nÃ©gatif.
 	 *
 	 * @param nombre1
 	 * @param nombre2
@@ -45,7 +45,7 @@ public class M_Fonctions {
 			resultat = nombre1 - nombre2;
 			break;
 			
-		// Purement pédagogique, peut-être enlevé.
+		// Purement pÃ©dagogique, peut-Ãªtre enlevÃ©.
 		default:
 			break;
 		}
@@ -56,7 +56,7 @@ public class M_Fonctions {
 	}
 	
 	/**
-	 * Retourne  le premier caractère d un int.
+	 * Retourne  le premier caractÃ¨re d un int.
 	 * Par ex 1231 -> '1'
 	 * 
 	 * @param monInt
@@ -67,10 +67,10 @@ public class M_Fonctions {
 	}
 
 	/**
-	 * Retourne le 1er caractère d'une chaîne.
+	 * Retourne le 1er caractÃ¨re d'une chaÃ®ne.
 	 * 
-	 * @param string La chaîne à considérer.
-	 * @return Le 1er caractère de string
+	 * @param string La chaÃ®ne Ã  considÃ©rer.
+	 * @return Le 1er caractÃ¨re de string
 	 */
 	public static char premierCarDunString(String chaine){
 		return chaine.charAt(0);
@@ -79,14 +79,14 @@ public class M_Fonctions {
 	/**
 	 * Transforme un int en String.
 	 * @param Le nombreAconvertir
-	 * @return Le même nombre version String.
+	 * @return Le mÃªme nombre version String.
 	 */
 	public static String entierAString(int nombreAconvertir){
 		return "" + nombreAconvertir;
 	}
 
 	/**
-	 * Génère une lettre entre deux bornes de la table ascii.
+	 * GÃ©nÃ©re une lettre entre deux bornes de la table ascii.
 	 * @param min
 	 * @param max
 	 * @return une  lettre entre deux bornes de la table ascii.
@@ -96,7 +96,7 @@ public class M_Fonctions {
 	}
 
 	/**
-	 * Génère un entier entre min et max.
+	 * GÃ©nÃ©re un entier entre min et max.
 	 * @param min
 	 * @param max
 	 * @return un entier entre min et max.
